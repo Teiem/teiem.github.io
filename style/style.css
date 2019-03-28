@@ -2,6 +2,7 @@
 /* PoorStory-Regular.ttf: Copyright (c) YoonDesign Inc. All Rights Reserved. SIL Open Font License, 1.1*/
 @font-face {
     font-family: 'Poor Story';
+    font-display: auto;
     font-style: normal;
     font-weight: 400;
     src: local('Poor Story Regular'), local('PoorStory-Regular'),
@@ -13,6 +14,7 @@
 /* IndieFlower.ttf: Copyright (c) 2010, Kimberly Geswein (kimberlygeswein.com kimberlygeswein@gmail.com) SIL Open Font License, 1.1*/
 @font-face {
     font-family: 'Indie Flower';
+    font-display: auto;
     font-style: normal;
     font-weight: 400;
     src: local('Indie Flower'), local('IndieFlower'),
