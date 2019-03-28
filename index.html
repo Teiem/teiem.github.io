@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fitur Rewrite</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/tilde.css">
+    <link rel="stylesheet" href="style/sidebar.css">
+    <link rel="preload" href="fonts/indie-flower-v10-latin-regular.woff2" as="font" crossorigin>
+    <link rel="preload" href="fonts/poor-story-v5-latin-regular.woff2" as="font" crossorigin>
+</head>
+
+<body>
+    <div class="sidebarWrap">
+        <div id="sidebar">
+            <div id="toparea">
+                <div class="arrowCenterBox">
+                    <div class="arrow arrow--left" tabindex="0" id="openButton"
+                        onclick="sidebar.toggle(); _.blurAfterClick(this, event);">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="iconContainer">
+                    <!-- <div class="icono-paperClip"></div> -->
+                </div>
+            </div>
+            <div id="tabsBody">
+                <div id="menu_Wrap" class="arrow-wrapper">
+                    <div class="arrow arrow--left" id="menuLeft" tabindex="0"
+                        onclick="sidebar.menu.selPrev(event); _.blurAfterClick(this, event)">
+                        <span></span>
+                    </div>
+
+                    <div class="select_Wrap">
+                        <select name="tabs" id="tabSelect" class="block" onchange="sidebar.menu.readSelect()"
+                            onclick="sidebar.menu.open()">
+                        </select>
+                        <div class="arrowWrap">
+                            <a id="arrow_down">
+                                <span class="left-bar"></span>
+                                <span class="right-bar"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="arrow arrow--right" id="menuRight" tabindex="0"
+                        onclick="sidebar.menu.selNext(event); _.blurAfterClick(this, event)">
+                        <span></span>
+                    </div>
+                </div>
+
+                <div class="textareaBox">
+                    <textarea name="notesTextarea" id="notesTextarea" placeholder="Add your notes here..."></textarea>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+                        <line class="top" x1="0" y1="0" x2="300%" y2="0" />
+                        <line class="left" x1="0" y1="100%" x2="0" y2="-200%" />
+                        <line class="bottom" x1="100%" y1="100%" x2="-200%" y2="100%" />
+                        <line class="right" x1="100%" y1="0" x2="100%" y2="300%" />
+                    </svg>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="weatherWiget"></div>
+    <div id="mainBody">
+        <video autoplay loop muted playsinline id="video">
+            <source src="starryNightFull10.webm" type="video/webm">
+        </video>
+        <div id="stripes"></div>
+        <div class="center"><time class="clock" id="clock"></time></div>
+
+        <form autocomplete="off" class="center overlay search-form" id="search-form" spellcheck="false">
+            <div>
+                <input class="search-input" id="search-input" title="search" type="text" />
+                <div id="output"></div>
+                <ul class="search-suggestions" id="search-suggestions"></ul>
+            </div>
+        </form>
+
+        <aside class="center help overlay" id="help"></aside>
+    </div>
+</body>
+
+</html>
+
+<script src="script/script.js"></script>
+<script src="script/tilde.js"></script>
+<script src="script/sidebar.js"></script>
+<script src="script/init.js"></script>

@@ -1,0 +1,583 @@
+/* Fixes For Firefox */
+@-moz-document url-prefix() {
+    #tabSelect {
+        text-indent: 0.5em !important;
+        /* Different Text rendering in ff */
+    }
+
+    .textareaBox > svg {
+        /*  https://bugzilla.mozilla.org/show_bug.cgi?id=594933
+            https://bugzilla.mozilla.org/show_bug.cgi?id=1258270 */
+
+            display: none;
+    }
+
+    #notesTextarea:focus {
+        outline: #76b5ce6c auto 1px !important;
+    }
+}
+
+
+.sidebarWrap {
+    position: absolute;
+    right: 0;
+}
+
+#sidebar {
+    --shadow1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --shadow2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    --shadow3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+    --colorMain: #292F39;
+    --colorTop: #21272D;
+    --colorNavigationArrows: rgb(179, 186, 194);
+    --colorNavigationArrowsHover: rgb(238, 240, 241);
+    --arrowColor: rgb(64, 77, 92);
+    --colorButton: #313C48;
+    --logoColor: var(--colorNavigationArrows);
+
+    --textColor: white;
+
+    /* sidebar size */
+    font-size: 1.2vh;
+
+    
+    width: 25em;
+    height: 100vh;
+    background-color: #00000000;
+    position: relative;
+    float: right;
+    transform: translate(20em);
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+    z-index: 3;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar.openSidebar {
+    transform: translate(0);
+    background-color: var(--colorMain);
+    box-shadow: var(--shadow3);
+}
+
+#toparea:focus-within,
+#toparea:hover,
+.openSidebar>#toparea {
+    opacity: 1;
+}
+
+#toparea {
+    background-color: var(--colorTop);
+    width: 100%;
+    height: 5em;
+
+    position: relative;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    box-shadow: var(--shadow3);
+}
+
+.arrowCenterBox {
+    height: 100%;
+    border: none;
+    color: var(--textColor);
+    width: 5em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#openButton {
+    width: 1em;
+    transition: transform 0.2s ease-in-out;
+    transform-origin: left;
+}
+
+.arrow.arrow--left#openButton:hover span,
+.arrow.arrow--left#openButton:hover:before,
+.arrow.arrow--left#openButton:hover:after,
+.arrow.arrow--left#openButton:focus span,
+.arrow.arrow--left#openButton:focus:before,
+.arrow.arrow--left#openButton:focus:after {
+    /* the button that opens the sidebar shouldnt move */
+    left: -7.5px;
+}
+
+.openSidebar>#toparea>.arrowCenterBox>#openButton {
+    transform: rotate(180deg);
+}
+
+#tabsBody {
+    flex: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transform: translate(5em);
+    transition: transform 0.2s ease-in-out;
+}
+
+#sidebar.openSidebar>#tabsBody {
+    transform: translate(0);
+}
+
+/* Menu Arrows */
+
+#menu_Wrap {
+    width: 75%;
+    margin: 2.5em 17.5%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.arrow-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* Arrows */
+.arrow {
+    --size: 15px;
+    --width: 2px;
+    cursor: pointer;
+    display: block;
+    width: calc(var(--size) / 1.414);
+    height: calc(var(--size) / 1.414 * 2);
+    position: relative;
+    /* -webkit-transform: translateZ(0); */
+
+    outline: none;
+    transition: opacity 0.15s;
+}
+
+.arrow span,
+.arrow:before,
+.arrow:after {
+    background: var(--colorNavigationArrows);
+    content: '';
+    display: block;
+    width: var(--size);
+    height: var(--width);
+    position: absolute;
+    top: calc(50% - (var(--width) / 2));
+}
+
+.arrow:hover span,
+.arrow:hover:before,
+.arrow:hover:after,
+
+.arrow:focus span,
+.arrow:focus:before,
+.arrow:focus:after {
+    background: var(--colorNavigationArrowsHover);
+}
+
+.arrow:before {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.arrow:after {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.arrow span {
+    width: 0;
+}
+
+.arrow:hover span,
+
+.arrow:focus span {
+    width: calc(var(--size) * 1.414);
+}
+
+.arrow.arrow--left span,
+.arrow.arrow--left:before,
+.arrow.arrow--left:after {
+    left: 0;
+    -webkit-transform-origin: left 50%;
+    transform-origin: left 50%;
+    box-shadow: var(--shadow2);
+}
+
+.arrow.arrow--left:before,
+.arrow.arrow--left:after {
+    transition: left 0.3s 0.05s, background-color 0.3s;
+}
+
+.arrow.arrow--left span {
+    transition: width 0.3s, left 0.3s 0.05s, background-color 0.3s;
+}
+
+.arrow.arrow--left:hover span,
+.arrow.arrow--left:hover:before,
+.arrow.arrow--left:hover:after,
+
+.arrow.arrow--left:focus span,
+.arrow.arrow--left:focus:before,
+.arrow.arrow--left:focus:after {
+    left: calc(var(--size) * -1.414);
+}
+
+.arrow.arrow--right span,
+.arrow.arrow--right:before,
+.arrow.arrow--right:after {
+    right: 0;
+    -webkit-transform-origin: right 50%;
+    transform-origin: right 50%;
+    box-shadow: var(--shadow2);
+}
+
+.arrow.arrow--right:before,
+.arrow.arrow--right:after {
+    transition: right 0.3s 0.05s, background-color 0.3s;
+}
+
+.arrow.arrow--right span {
+    transition: width 0.3s, right 0.3s 0.05s, background-color 0.3s;
+}
+
+.arrow.arrow--right:hover span,
+.arrow.arrow--right:hover:before,
+.arrow.arrow--right:hover:after,
+
+.arrow.arrow--right:focus span,
+.arrow.arrow--right:focus:before,
+.arrow.arrow--right:focus:after {
+    right: calc(var(--size) * -1.414);
+}
+
+/* Credit: https://codepen.io/crshd/pen/ebxwLJ */
+
+/* select Arrow*/
+
+.select_Wrap {
+    align-self: center;
+    width: 80%;
+    height: 3.75em;
+    position: relative;
+}
+
+#tabSelect {
+    width: 100%;
+    height: 100%;
+
+    font-size: 1.25em;
+
+    background-color: var(--colorButton);
+    color: var(--textColor);
+    border: 0;
+    border-radius: 0.2em;
+    text-indent: 1em;
+    text-transform: capitalize;
+    outline: none;
+
+    box-shadow: var(--shadow2);
+    transition: box-shadow 0.15s;
+}
+
+#tabSelect:hover,
+#tabSelect:focus,
+#tabSelect:active {
+    box-shadow: var(--shadow3);
+}
+
+
+select {
+    /* for Firefox */
+    -moz-appearance: none;
+    /* for Chrome */
+    -webkit-appearance: none;
+}
+
+.arrowWrap {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    pointer-events: none;
+}
+
+#arrow_down {
+    font-size: 0.65em;
+
+    height: 2.8em;
+    width: 2.8em;
+    display: block;
+    padding: 0.5em;
+    position: relative;
+    cursor: pointer;
+    border-radius: 0.184em;
+    float: right;
+    transform: translate(-75%, 95%);
+}
+
+.left-bar {
+    position: absolute;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    width: 1.843em;
+    height: 0.461em;
+    display: block;
+    transform: rotate(35deg);
+    float: right;
+    border-radius: 0.092em;
+}
+
+.left-bar:after {
+    content: "";
+    background-color: var(--arrowColor);
+    width: 1.843em;
+    height: 0.461em;
+    display: block;
+    float: right;
+    border-radius: 0.276em 0.461em 0.461em 0.276em;
+    transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
+    z-index: -1;
+}
+
+.right-bar {
+    position: absolute;
+    background-color: transparent;
+    top: 0;
+    left: 1.298em;
+    width: 1.843em;
+    height: 0.461em;
+    display: block;
+    transform: rotate(-35deg);
+    float: right;
+    border-radius: 0.092em;
+}
+
+.right-bar:after {
+    content: "";
+    background-color: var(--arrowColor);
+    width: 1.843em;
+    height: 0.461em;
+    display: block;
+    float: right;
+    border-radius: 0.461em 0.276em 0.276em 0.461em;
+    transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
+    z-index: -1;
+}
+
+.arrowDown .left-bar:after {
+    transform-origin: center center;
+    transform: rotate(-70deg);
+}
+
+.arrowDown .right-bar:after {
+    transform-origin: center center;
+    transform: rotate(70deg);
+}
+
+/* Credit: https://codepen.io/mattbraun/pen/EywBJR */
+
+/* Textarea */
+
+.textareaBox {
+    flex: auto;
+    position: relative;
+    width: 95%;
+
+    --width: calc(25em * 0.95);
+    --height: calc(100vh - 13.75em);
+    --tramsitionDuration: 0.75;
+}
+
+#notesTextarea {
+    font-size: 1.25em;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    background: #00000000;
+    border: none;
+    color: var(--textColor);
+    position: absolute;
+    outline: none;
+    padding: 0.75em 1em;
+}
+
+svg {
+    height: var(--height);
+}
+
+.textareaBox svg line {
+    opacity: 0;
+    stroke-width: 3;
+    stroke: var(--colorButton);
+    fill: none;
+    /*?*/
+    -webkit-transition: all calc(0.8s * var(--tramsitionDuration)) ease-in-out;
+    transition: all calc(0.8s * var(--tramsitionDuration)) ease-in-out;
+}
+
+.textareaBox svg line.top,
+.textareaBox svg line.bottom {
+    stroke-dasharray: calc(var(--width) + 30px) calc(var(--width) - 60px);
+}
+
+.textareaBox svg line.left,
+.textareaBox svg line.right {
+    stroke-dasharray: calc(var(--height) + 30px) calc(var(--height) - 60px);
+}
+
+.textareaBox:hover svg line.top,
+.textareaBox:focus-within svg line.top {
+    -webkit-transform: translateX(-200%);
+    transform: translateX(-200%);
+}
+
+.textareaBox:hover svg line.bottom,
+.textareaBox:focus-within svg line.bottom {
+    -webkit-transform: translateX(200%);
+    transform: translateX(200%);
+}
+
+.textareaBox:hover svg line.left,
+.textareaBox:focus-within svg line.left {
+    -webkit-transform: translateY(200%);
+    transform: translateY(200%);
+}
+
+.textareaBox:hover svg line.right,
+.textareaBox:focus-within svg line.right {
+    -webkit-transform: translateY(-200%);
+    transform: translateY(-200%);
+}
+
+/* Alternatives */
+
+
+/* Frame */
+.textareaBox {
+    background: rgba(0, 0, 0, 0);
+}
+
+.textareaBox>svg {
+    filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.16)) drop-shadow(0 3px 3px rgba(0, 0, 0, 0.23));
+    pointer-events: none;
+}
+
+.textareaBox svg line {
+    -webkit-transition: all calc(0.5s * var(--tramsitionDuration));
+    transition: all calc(0.5s * var(--tramsitionDuration));
+}
+
+.textareaBox:hover svg line,
+.textareaBox:focus-within svg line {
+    opacity: 1;
+    stroke-width: 10;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+.textareaBox:hover svg line.top,
+.textareaBox:focus-within svg line.top {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.textareaBox:hover svg line.bottom,
+.textareaBox:focus-within svg line.bottom {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.textareaBox:hover svg line.left,
+.textareaBox:focus-within svg line.left {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+}
+
+.textareaBox:hover svg line.right,
+.textareaBox:focus-within svg line.right {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+/* Credit for textarea "outline" 
+https://tympanus.net/codrops/2014/02/26/creating-a-border-animation-effect-with-svg-and-css/ */
+
+/* PaperClip Icon - Not in use ATM*/
+
+.iconContainer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.icono-paperClip,
+.icono-paperClip:after,
+.icono-paperClip:before {
+    font-size: 1px;
+    border: 2em solid
+}
+
+.icono-paperClip:before {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    width: 18em;
+    height: 6em;
+    right: 2em;
+    border-radius: 0 16em 16em 0;
+    border-left: none
+}
+
+.icono-paperClip {
+    width: 24em;
+    height: 18em;
+    border-left: none;
+    border-radius: 0 16em 16em 0;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    margin: 5em 0 11em 10em;
+
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    font-style: normal;
+    color: var(--logoColor);
+    text-align: left;
+    text-indent: -9999em;
+    direction: ltr;
+}
+
+
+.icono-paperClip:after {
+    position: absolute;
+    width: 12em;
+    height: 10em;
+    left: -12em;
+    top: -2em;
+    border-right: none;
+    border-radius: 16em 0 0 16em
+}
+
+.icono-paperClip:after,
+.icono-paperClip:before {
+    content: '';
+    pointer-events: none
+}
+
+
+/* Credit: https://saeedalipoor.github.io/icono/ Icon*/

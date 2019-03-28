@@ -1,0 +1,678 @@
+/* poor-story-regular - latin */
+/* PoorStory-Regular.ttf: Copyright (c) YoonDesign Inc. All Rights Reserved. SIL Open Font License, 1.1*/
+@font-face {
+    font-family: 'Poor Story';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Poor Story Regular'), local('PoorStory-Regular'),
+         url('../fonts/poor-story-v5-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/poor-story-v5-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+
+/* indie-flower-regular - latin */
+/* IndieFlower.ttf: Copyright (c) 2010, Kimberly Geswein (kimberlygeswein.com kimberlygeswein@gmail.com) SIL Open Font License, 1.1*/
+@font-face {
+    font-family: 'Indie Flower';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Indie Flower'), local('IndieFlower'),
+         url('../fonts/indie-flower-v10-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/indie-flower-v10-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+
+:root {
+    --bgColor: #17191d;
+}
+
+/* Main */
+
+body {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--bgColor);
+    font-family: 'Indie Flower', cursive;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+
+    background: #17191d;
+}
+
+#mainBody {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+
+    margin: 0 auto;
+    transition: width 0.3s ease 0.6s, transform 0.3s ease 0.6s;
+}
+
+#video {
+    position: absolute;
+    min-width: 100vw;
+    min-height: 100vh;
+    
+    margin-left: 50%;
+    transform: translateX(-50%);
+    
+}
+
+/* Stripes*/
+
+#stripes {
+    position: relative;
+    height: 100vh;
+    z-index: 3;
+    pointer-events: none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.stripe {
+    flex: 1;
+}
+
+.stripe>div {
+    pointer-events: auto;
+}
+
+.stripeBody {
+    width: 40px;
+    height: 100%;
+    color: lightgrey;
+    box-shadow: 20px 0 60px -6px rgba(0, 0, 0, 0.4);
+    /* overflow: hidden; */
+    /* clip: rect(-100vh, 10vw, 100vh, 0%); */
+
+}
+
+.stripeBody.transition {
+    transition: width 125ms ease-in-out;
+}
+
+.stripeBody:hover {
+    width: 100% !important;
+    transition: width 400ms ease !important;
+}
+
+
+.stripeBody .title {
+    position: relative;
+    width: 40px;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.stripeBody .title>div {
+    /*Puts the Title in the right place*/
+
+    color: lightgrey;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+
+    font-family: 'Poor Story', cursive;
+    font-weight: 300;
+    font-size: 1.1em;
+}
+
+.stripe>.approx {
+    position: absolute;
+    width: 15%;
+    height: 100%;
+    margin-left: 40px;
+    z-index: -1;
+}
+
+.stripeBody>.content {
+    position: relative;
+    height: 100%;
+    font-weight: 400;
+    font-size: 1.05em;
+    pointer-events: none;
+    user-select: none;
+
+    display: flex;
+    justify-content: space-around;
+
+    opacity: 0;
+    transition: opacity 125ms ease-in-out;
+}
+
+.stripeBody:hover>.content {
+    pointer-events: auto;
+    opacity: 1;
+    transition: opacity 350ms ease 50ms !important;
+}
+
+.stripeBody>.content span {
+    align-self: center;
+}
+
+.stripeBody>.content span a {
+    text-decoration: none;
+    color: white;
+}
+
+
+/*buttons*/
+/* Button for search suggestion */
+
+.buttonSS {
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    box-shadow: 20px 38px 34px -26px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 0.3s, transform 0.3s;
+
+    will-change: transform;
+}
+
+.buttonSS::before {
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+.buttonSS.highlight,
+.buttonSS:hover {
+    /* box-shadow: 2px 8px 4px -6px rgba(0, 0, 0, 0.375); */
+    transform: scale(0.97521);
+    box-shadow: 2px 8px 4px -6px rgba(0, 0, 0, 0.375);
+}
+
+/* general */
+
+.open {
+    width: 90% !important;
+    transform: translateY(9em);
+    transition: width 0.3s ease 0s, transform 0.3s ease 0s !important;
+}
+
+.buttonStripe>a,
+.buttonSS {
+    min-width: 120px;
+    margin: 0.8em;
+    padding: 0.6em 1.2em;
+    background: none;
+    color: inherit;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    font-size: 127.5%;
+    font-weight: 400;
+    border: 2px solid;
+    border-color: #ffffff66 !important;
+}
+
+.buttonStripe>a:focus,
+.search-suggestion.highlight,
+.buttonSS:focus {
+    outline: none;
+}
+
+.buttonSS>span {
+    vertical-align: middle;
+}
+
+.buttonStripe>a::before,
+.buttonSS::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.75);
+    /* 10161f */
+    /* Area Hover*/
+    z-index: -1;
+    opacity: 0;
+    -webkit-transform: scale3d(0.6, 1, 1);
+    transform: scale3d(0.6, 1, 1);
+    -webkit-transition: -webkit-transform 0.4s, opacity 0.4s ease-in-out;
+    transition: transform 0.4s, opacity 0.4s ease-in-out;
+}
+
+.buttonStripe>a,
+.buttonStripe>a::before,
+.buttonSS,
+.buttonSS::before {
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.buttonStripe>a:focus,
+.buttonStripe>a:hover,
+.search-suggestion.highlight,
+.buttonSS:focus,
+.buttonSS:hover {
+    color: #fff;
+    /*Font Color Hover*/
+    border-color: #fff;
+    /*Border Color Hover*/
+}
+
+.buttonStripe>a:focus::before,
+.buttonStripe>a:hover::before,
+.search-suggestion.highlight::before,
+.buttonSS:focus::before,
+.buttonSS:hover::before {
+    opacity: 0.08;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+/* Weather Icons */
+
+.weatherDiscription {
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.icon {
+    color: #17191d;
+    position: relative;
+    width: 12em;
+    height: 10em;
+    font-size: 0.6em;
+    margin: 0 auto;
+    /* control icon size here */
+}
+
+.cloud {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 3.6875em;
+    height: 3.6875em;
+    margin: -1.84375em;
+    background: currentColor;
+    border-radius: 50%;
+    box-shadow:
+        -2.1875em 0.6875em 0 -0.6875em,
+        2.0625em 0.9375em 0 -0.9375em,
+        0 0 0 0.375em #256984,
+        -2.1875em 0.6875em 0 -0.3125em #256984,
+        2.0625em 0.9375em 0 -0.5625em #256984;
+}
+
+.cloud:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -0.5em;
+    display: block;
+    width: 4.5625em;
+    height: 1em;
+    background: currentColor;
+    box-shadow: 0 0.4375em 0 -0.0625em #256984;
+}
+
+.cloud:nth-child(2) {
+    z-index: 0;
+    background: #256984;
+    box-shadow:
+        -2.1875em 0.6875em 0 -0.6875em #256984,
+        2.0625em 0.9375em 0 -0.9375em #256984,
+        0 0 0 0.375em #256984,
+        -2.1875em 0.6875em 0 -0.3125em #256984,
+        2.0625em 0.9375em 0 -0.5625em #256984;
+    transform: scale(0.5) translate(6em, -3em);
+    animation: cloud 4s linear infinite;
+}
+
+.cloud:nth-child(2):after {
+    background: #256984;
+}
+
+.sun {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    margin: -1.25em;
+    background: currentColor;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0.375em #256984;
+    animation: spin 12s infinite linear;
+}
+
+.rays {
+    position: absolute;
+    top: -2em;
+    left: 50%;
+    display: block;
+    width: 0.375em;
+    height: 1.125em;
+    margin-left: -0.1875em;
+    background: #256984;
+    border-radius: 0.25em;
+    box-shadow: 0 5.375em #256984;
+}
+
+.rays:before,
+.rays:after {
+    content: '';
+    position: absolute;
+    top: 0em;
+    left: 0em;
+    display: block;
+    width: 0.375em;
+    height: 1.125em;
+    transform: rotate(60deg);
+    transform-origin: 50% 3.25em;
+    background: #256984;
+    border-radius: 0.25em;
+    box-shadow: 0 5.375em #256984;
+}
+
+.rays:before {
+    transform: rotate(120deg);
+}
+
+.cloud+.sun {
+    margin: -2em 1em;
+}
+
+.rain,
+.lightning,
+.snow {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    width: 3.75em;
+    height: 3.75em;
+    margin: 0.375em 0 0 -2em;
+    background: currentColor;
+}
+
+.rain:after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    width: 1.125em;
+    height: 1.125em;
+    margin: -1em 0 0 -0.25em;
+    background: #0cf;
+    border-radius: 100% 0 60% 50% / 60% 0 100% 50%;
+    box-shadow:
+        0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2),
+        -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2),
+        -1.375em -0.125em 0 rgba(255, 255, 255, 0.2);
+    transform: rotate(-28deg);
+    animation: rain 3s linear infinite;
+}
+
+.bolt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -0.25em 0 0 -0.125em;
+    color: #256984;
+    opacity: 0.3;
+    animation: lightning 2s linear infinite;
+}
+
+.bolt:nth-child(2) {
+    width: 0.5em;
+    height: 0.25em;
+    margin: -1.75em 0 0 -1.875em;
+    transform: translate(2.5em, 2.25em);
+    opacity: 0.2;
+    animation: lightning 1.5s linear infinite;
+}
+
+.bolt:before,
+.bolt:after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    margin: -1.625em 0 0 -1.0125em;
+    border-top: 1.25em solid transparent;
+    border-right: 0.75em solid;
+    border-bottom: 0.75em solid;
+    border-left: 0.5em solid transparent;
+    transform: skewX(-10deg);
+}
+
+.bolt:after {
+    margin: -0.25em 0 0 -0.25em;
+    border-top: 0.75em solid;
+    border-right: 0.5em solid transparent;
+    border-bottom: 1.25em solid transparent;
+    border-left: 0.75em solid;
+    transform: skewX(-10deg);
+}
+
+.bolt:nth-child(2):before {
+    margin: -0.75em 0 0 -0.5em;
+    border-top: 0.625em solid transparent;
+    border-right: 0.375em solid;
+    border-bottom: 0.375em solid;
+    border-left: 0.25em solid transparent;
+}
+
+.bolt:nth-child(2):after {
+    margin: -0.125em 0 0 -0.125em;
+    border-top: 0.375em solid;
+    border-right: 0.25em solid transparent;
+    border-bottom: 0.625em solid transparent;
+    border-left: 0.375em solid;
+}
+
+.flake:before,
+.flake:after {
+    content: '\2744';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -1.025em 0 0 -1.0125em;
+    color: #256984;
+    /* list-height: 1em; */
+    opacity: 0.2;
+    animation: spin 8s linear infinite reverse;
+}
+
+.flake:after {
+    margin: 0.125em 0 0 -1em;
+    font-size: 1.5em;
+    opacity: 0.4;
+    animation: spin 14s linear infinite;
+}
+
+.flake:nth-child(2):before {
+    margin: -0.5em 0 0 0.25em;
+    font-size: 1.25em;
+    opacity: 0.2;
+    animation: spin 10s linear infinite;
+}
+
+.flake:nth-child(2):after {
+    margin: 0.375em 0 0 0.125em;
+    font-size: 2em;
+    opacity: 0.4;
+    animation: spin 16s linear infinite reverse;
+}
+
+
+/* Animations */
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes cloud {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.5) translate(-200%, -3em);
+    }
+}
+
+@keyframes rain {
+    0% {
+        background: #0cf;
+        box-shadow:
+            0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2),
+            -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2),
+            -1.375em -0.125em 0 #0cf;
+    }
+
+    25% {
+        box-shadow:
+            0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2),
+            -0.875em 1.125em 0 -0.125em #0cf,
+            -1.375em -0.125em 0 rgba(255, 255, 255, 0.2);
+    }
+
+    50% {
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow:
+            0.625em 0.875em 0 -0.125em #0cf,
+            -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2),
+            -1.375em -0.125em 0 rgba(255, 255, 255, 0.2);
+    }
+
+    100% {
+        box-shadow:
+            0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2),
+            -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2),
+            -1.375em -0.125em 0 #0cf;
+    }
+}
+
+@keyframes lightning {
+    45% {
+        color: #fff;
+        background: #fff;
+        opacity: 0.2;
+    }
+
+    50% {
+        color: #0cf;
+        background: #0cf;
+        opacity: 1;
+    }
+
+    55% {
+        color: #fff;
+        background: #fff;
+        opacity: 0.2;
+    }
+}
+
+/* Credit: https://codepen.io/joshbader/pen/EjXgqr */
+
+/* Weather Bar */
+
+#weatherWiget {
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    margin: 0 25vw;
+    width: 50vw;
+
+    display: flex;
+}
+
+#weatherWiget.lowerIcons>.weather {
+    top: 0;
+}
+
+#weatherWiget>.weather {
+    top: -10em;
+}
+
+#weatherWiget>.weather:nth-child(1) {
+    /* Fly in + Delay */
+    -moz-transition: top 0.3s ease 0.15s;
+    -o-transition: top 0.3s ease 0.15s;
+    -webkit-transition: top 0.3s ease;
+    -webkit-transition-delay: 0.15s;
+    transition-delay: 0.15s;
+    transition: top 0.3s ease 0.15s;
+}
+
+#weatherWiget>.weather:nth-child(2) {
+    -moz-transition: top 0.3s ease 0.2s;
+    -o-transition: top 0.3s ease 0.2s;
+    -webkit-transition: top 0.3s ease;
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+    transition: top 0.3s ease 0.2s;
+}
+
+#weatherWiget>.weather:nth-child(3) {
+    -moz-transition: top 0.3s ease 0.25s;
+    -o-transition: top 0.3s ease 0.25s;
+    -webkit-transition: top 0.3s ease;
+    -webkit-transition-delay: 0.25s;
+    transition-delay: 0.25s;
+    transition: top 0.3s ease 0.25s;
+}
+
+#weatherWiget>.weather:nth-child(4) {
+    -moz-transition: top 0.3s ease 0.3s;
+    -o-transition: top 0.3s ease 0.3s;
+    -webkit-transition: top 0.3s ease 0.3s;
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+    transition: top 0.3s ease 0.3s;
+    -ms-transition: top 0.3s ease 0.3s;
+}
+
+#weatherWiget>.weather:nth-child(5) {
+    -moz-transition: top 0.3s ease 0.35s;
+    -o-transition: top 0.3s ease 0.35s;
+    -webkit-transition: top 0.3s ease;
+    -webkit-transition-delay: 0.35s;
+    transition-delay: 0.35s;
+    transition: top 0.3s ease 0.35s;
+}
+
+#weatherWiget>.weather:nth-child(6) {
+    -moz-transition: top 0.3s ease 0.35s;
+    -o-transition: top 0.3s ease 0.35s;
+    -webkit-transition: top 0.3s ease;
+    -webkit-transition-delay: 0.35s;
+    transition-delay: 0.35s;
+    transition: top 0.3s ease 0.35s;
+}
+
+#weatherWiget>.weather:nth-child(7) {
+    -moz-transition: top 0.3s ease 0.35s;
+    -o-transition: top 0.3s ease 0.35s;
+    -webkit-transition: top 0.3s ease;
+    -webkit-transition-delay: 0.35s;
+    transition-delay: 0.35s;
+    transition: top 0.3s ease 0.35s;
+}
+
+.weather {
+    flex: auto;
+    position: relative;
+}
