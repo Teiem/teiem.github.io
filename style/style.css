@@ -48,6 +48,9 @@ body {
     position: relative;
 
     margin: 0 auto;
+}
+
+.transitionMainBody {
     transition: width 0.3s ease 0.6s, transform 0.3s ease 0.6s;
 }
 
