@@ -54,6 +54,7 @@
         sidebar.notesStorage.load,
         sidebar.notesStorage.storeOnBlur,
         weather.getWeather,
+        () => {document.getElementById("mainBody").classList.add("transitionMainBody")},
     ]
 
     const workWhileIdle = (index = 0) => {
