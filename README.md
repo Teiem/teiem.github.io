@@ -10,7 +10,7 @@ Features
   - navigatable by Keyboard
   - content editable in js
   
- Chromeium and Firefox (99%) are supported
+ Chromium and Firefox (99%) are supported
 
 If you have suggestions for features, let me know
  
